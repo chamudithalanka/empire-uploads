@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Page</title>
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,6 +26,7 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         .file-info {
             text-align: center;
@@ -45,7 +48,9 @@
             text-align: left;
         }
         .download-btn {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 200px;
             margin: 0 auto;
             padding: 10px;
@@ -55,6 +60,10 @@
             text-decoration: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 18px;
+        }
+        .download-btn i {
+            margin-right: 8px;
         }
         .download-btn:hover {
             background-color: #0056b3;
@@ -104,6 +113,14 @@
         .footer {
             font-size: 16px;
         }
+        .footer i {
+            margin-right: 8px;
+        }
+        /* Center the iframe */
+        .iframe-container {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -133,11 +150,20 @@
                 <td>3,476</td>
             </tr>
         </table>
-        <a href="#" class="download-btn" onclick="startDownloadTimer()">Download Now</a>
-    </div>
+        <a href="#" class="download-btn" onclick="startDownloadTimer(event)"> <!-- Add download Link to script -->
+            <i class="fas fa-download"></i> Download Now
+        </a>
 
-    <div id="message" class="hidden">Your download will start shortly...</div>
-    <div id="countdown" class="hidden">25 seconds remaining</div>
+        <div class="message-container">
+            <div id="message" class="hidden">Your download will start shortly...</div>
+            <div id="countdown" class="hidden">25 seconds remaining</div>
+        </div>
+
+        <!-- Iframe with fixed dimensions and centered -->
+        <div class="iframe-container">
+            <iframe src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGOO_DI2Gn74LxqaWG48GtXyf_3fHYr1VFOXYel5Sc903xXMKYg78Ic-FEya595V3BphWo6baMZK4W_NbOvjddVtyAhvv7wyVvpSpAmzHPhNiI2gPn2W8SujvQYPNSo3xsS5N1rGDGOesQdzyrAHCOPk2c6iYtDUh0ai28L8suVMFXesoi1hq7Wky2Tq6P/s1600/download.gif" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
 
     <div class="comment-section">
         Only people who have downloaded the file can comment.
@@ -155,11 +181,13 @@
 
 <!-- Footer Section -->
 <div class="footer">
-    © 2024 Chamu bro | EmpireUploads
+    © 2024&nbsp;<i class="fab fa-github"></i>Chamu bro | EmpireUploads
 </div>
 
 <script>
-    function startDownloadTimer() {
+    function startDownloadTimer(event) {
+        event.preventDefault(); // Prevent the default action of the link
+
         document.getElementById('message').classList.remove('hidden');
         document.getElementById('countdown').classList.remove('hidden');
 
@@ -168,8 +196,10 @@
             if (timeleft <= 0) {
                 clearInterval(downloadTimer);
                 document.getElementById('countdown').innerHTML = "Download starting now...";
+
+                // Create and click the download link after the countdown
                 var link = document.createElement('a');
-                link.href = 'file/Hotel Kabalana Bronchure.pdf'; // Change this to the actual file path
+                link.href = '#'; // Change this to the actual file path
                 link.download = 'Kabalana Hotel Bronchure'; // Change this to the actual file name
                 link.click();
             } else {
