@@ -192,7 +192,7 @@ header h2 {
   height: 55px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the icon */
+  justify-content: flex-start; /* Center the icon */
   width: 50px; /* Ensure button width */
   font-size: 1.35rem;
 }
