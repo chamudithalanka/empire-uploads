@@ -9,7 +9,7 @@
 }
 
 body {
-  background: #ffffff00;
+  background: #e3f2fd00;
 }
 
 .chatbot-toggler {
@@ -170,13 +170,11 @@ header h2 {
   background: #fff;
   padding: 3px 20px;
   border-top: 1px solid #ddd;
-  box-shadow: 0 -1px 5px rgba(0,0,0,0.2); /* Add shadow for better separation */
-  z-index: 1002; /* Ensure it’s on top */
 }
 
 .chat-input textarea {
   height: 55px;
-  width: calc(100% - 65px); /* Adjust width to account for the send button */
+  width: 100%;
   border: none;
   outline: none;
   resize: none;
@@ -186,14 +184,13 @@ header h2 {
 }
 
 .chat-input span {
-  align-self: center;
+  align-self: flex-end;
   color: #724ae8;
   cursor: pointer;
   height: 55px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the icon */
-  width: 50px; /* Ensure button width */
+  visibility: hidden;
   font-size: 1.35rem;
 }
 
@@ -225,7 +222,6 @@ header h2 {
 
   .chatbot .chat-input {
     padding: 10px 15px;
-    gap: 10px; /* Increased gap between textarea and send button */
   }
 
   .chatbot header span {
